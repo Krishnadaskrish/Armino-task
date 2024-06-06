@@ -3,7 +3,6 @@ const imageCollection = require('../model/ImageCollection');
 const timeConvert = require("moment-timezone")
 
 async function fetchApi(req, res) {
-    console.log('...............');
     const { cityName } = req.body;
     const fetchData = await fetch(`${process.env.WEATHER_API}&q=${cityName}`);
     const jsonData = await fetchData.json();
@@ -12,7 +11,6 @@ async function fetchApi(req, res) {
     }
    
     let imageData = await imageCollection.findOne({ weatherType: (jsonData.weather[0].main.toLowerCase()) }).select("imageUrl -_id ");
-    console.log(imageData,'lllllllllll');
     const data = await weatherCollection({
         name: jsonData.name,
         country: jsonData.country,

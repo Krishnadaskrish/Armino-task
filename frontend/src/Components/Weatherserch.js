@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { appData } from '../Context/Data';
 import axios from 'axios' 
 import Swal from 'sweetalert2';
@@ -41,6 +41,10 @@ export default function WeatherSearch() {
 
 
     }
+
+    useEffect (()=>{
+        fetchWeather()
+    },[])
 
   return (
     <div className=' mx-auto flex justify-center'>
