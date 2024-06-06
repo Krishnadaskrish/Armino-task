@@ -6,10 +6,13 @@ export default function WeatherSearch() {
 
     const {setWeatherData,setShowResult} = useContext(appData);
     console.log(setWeatherData)
-    const fetchWeather =async (e)=>{
+    const fetchWeather =async (e = null)=>{
+
+        if(e) {
         try{
             e.preventDefault();
-            const cityName = e.target.q.value;
+        const cityName = e?.target.q.value;
+
             console.log(cityName)
             const data = await axios.post("http://localhost:3001/api/details",{cityName})
             console.log(data)
@@ -18,7 +21,6 @@ export default function WeatherSearch() {
                return  setWeatherData(data.data.data)
             
             }
-        
 
         }
         catch(error){
@@ -35,6 +37,7 @@ export default function WeatherSearch() {
                 icon:"error",
             })
         }
+    }
     
         
 

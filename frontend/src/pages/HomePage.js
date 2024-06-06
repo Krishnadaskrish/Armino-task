@@ -8,21 +8,21 @@ function HomePage() {
   return (
     <>
       <WeatherSearch />
-      <div className="flex items-center justify-center h-screen bg-blue-100">
+      {weatherData?._id && (<div className="flex items-center justify-center h-screen bg-blue-100">
         <div className="flex bg-white p-8 rounded-lg shadow-lg w-full max-w-5xl space-x-4">
           <div className="text-center flex flex-col items-center justify-center w-1/3">
-            {weatherData.imageUrl && (
-              <img src={weatherData.imageUrl} alt="Weather" className="mb-4" />
+            {weatherData?.imageUrl && (
+              <img src={weatherData?.imageUrl} alt="Weather" className="mb-4" />
             )}
-            <div className="text-6xl">{weatherData.temperature.temp}°C</div>
+            <div className="text-6xl">{weatherData?.temperature.temp}°C</div>
             <div className="text-xl text-gray-700">
-              {weatherData.weather[0].main}
+              {weatherData?.weather[0].main}
             </div>
-            <div className="text-gray-600">{weatherData.name}</div>
-            <div className="text-gray-600">{weatherData.createdAt}</div>
+            <div className="text-gray-600">{weatherData?.name}</div>
+            <div className="text-gray-600">{weatherData?.createdAt}</div>
             <div className="text-gray-600">
-              Feels like {weatherData.temperature.feels_like}°C | Sunset{" "}
-              {weatherData.sunTimeDetails.sunset}
+              Feels like {weatherData?.temperature.feels_like}°C | Sunset{" "}
+              {weatherData?.sunTimeDetails.sunset}
             </div>
           </div>
 
@@ -54,7 +54,7 @@ function HomePage() {
             addition end say. Manners beloved affixed picture men ask.
           </div>
         </div>
-      </div>
+      </div>)}
     </>
   );
 }
